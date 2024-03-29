@@ -125,9 +125,8 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> favoriteNames = prefs.getStringList('favorites') ?? [];
   setState(() {
     for (var crypto in _cryptos) {
-      crypto.isFavorite = favoriteNames.contains(crypto.name); // This should be sufficient, contains() returns a bool
-    }
-  });
+      crypto.isFavorite = favoriteNames.contains(crypto.name); 
+   }});
 }
 
 
