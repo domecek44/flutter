@@ -90,7 +90,14 @@ class _CryptoDetailPageState extends State<CryptoDetailPage> {
             SizedBox(height: 20),
             Text('Price: \$${widget.crypto.price.toStringAsFixed(2)}', style: TextStyle(fontFamily: 'Satoshi' ,fontSize: 24)),
             SizedBox(height: 10),
-            Text('24h Change: ${widget.crypto.change24h.toStringAsFixed(2)}%', style: TextStyle(fontFamily: 'Satoshi' ,fontSize: 20)),
+            Text(
+           '24h Change: ${widget.crypto.change24h.toStringAsFixed(2)}%',
+          style: TextStyle(
+             fontFamily: 'Satoshi',
+             fontSize: 20,
+            color: widget.crypto.change24h < 0 ? Colors.red : Colors.green, 
+  ),
+),
             Expanded(
               child: LineChart(
                 LineChartData(
