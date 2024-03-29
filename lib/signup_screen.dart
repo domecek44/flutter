@@ -3,12 +3,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../main.dart';
+import 'package:cryptoapp/utililities/constants.dart'; 
 import '../model/user_model.dart';
 
-Color primary = const Color(0xff072227);
-Color secondary = const Color(0xff35858B);
-Color primaryLight = const Color(0xff4FBDBA);
-Color secondaryLight = const Color(0xffAEFEFF);
 
 class registration_screen extends StatefulWidget {
   const registration_screen({super.key});
@@ -18,13 +15,10 @@ class registration_screen extends StatefulWidget {
 }
 
 class _registration_screenState extends State<registration_screen> {
-  // Defining a Form Key
   final _formKey = GlobalKey<FormState>();
 
-  // Firebase Auth
   final _auth = FirebaseAuth.instance;
 
-  // Defining Editing Controller
   final TextEditingController firstNameEditingController =
       new TextEditingController();
   final TextEditingController lastNameEditingController =
@@ -38,8 +32,6 @@ class _registration_screenState extends State<registration_screen> {
 
   @override
   Widget build(BuildContext context) {
-    // Creating Form Fields
-    // First Name Field
     final firstNameField = TextFormField(
       autofocus: false,
       controller: firstNameEditingController,
@@ -68,7 +60,6 @@ class _registration_screenState extends State<registration_screen> {
       ),
     );
 
-    // Last name Text Field
     final lastNameField = TextFormField(
       autofocus: false,
       controller: lastNameEditingController,
@@ -96,7 +87,6 @@ class _registration_screenState extends State<registration_screen> {
           )),
     );
 
-    // Email Text field
     final emailField = TextFormField(
       autofocus: false,
       controller: emailEditingController,
@@ -105,7 +95,6 @@ class _registration_screenState extends State<registration_screen> {
         if (value!.isEmpty) {
           return ("Please Enter your email id.");
         }
-        // reg expression for email validation
         if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
           return ("Please Enter a valid Email");
         }
@@ -123,7 +112,6 @@ class _registration_screenState extends State<registration_screen> {
       ),
     );
 
-    // Password Text Field
     final passwordField = TextFormField(
       autofocus: false,
       controller: passwordEditingController,
@@ -136,6 +124,7 @@ class _registration_screenState extends State<registration_screen> {
         if (!regex.hasMatch(value)) {
           return ("Password is Invalid!!!");
         }
+        return null;
       },
       textInputAction: TextInputAction.next,
       decoration: InputDecoration(
@@ -148,7 +137,6 @@ class _registration_screenState extends State<registration_screen> {
       ),
     );
 
-    // Confirm password Text Field
     final confirmPasswordField = TextFormField(
       autofocus: false,
       controller: confirmPasswordEditingController,
@@ -171,11 +159,10 @@ class _registration_screenState extends State<registration_screen> {
       ),
     );
 
-    // Register Button
     final register_button = new Material(
       elevation: 4,
       borderRadius: BorderRadius.circular(30),
-      color: primary,
+      color: AppColors.primary,
       child: MaterialButton(
         onPressed: () {
           signUp(emailEditingController.text, passwordEditingController.text);
@@ -198,7 +185,7 @@ class _registration_screenState extends State<registration_screen> {
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_outlined),
-          color: primary,
+          color: AppColors.primary,
           onPressed: () {
             Navigator.of(context).pop();
           },

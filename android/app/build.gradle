@@ -3,8 +3,7 @@ plugins {
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
     id 'com.google.gms.google-services'
-}
-
+}                                                                                         
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -69,3 +68,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:32.7.2')
     implementation("com.google.firebase:firebase-auth")
 }
+
+android {                                                                                     
+   defaultConfig {                                                                             
+     minSdkVersion 21                                                                          
+   }                                                                                           
+ }    
